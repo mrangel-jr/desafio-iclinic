@@ -7,11 +7,20 @@ export default class Character extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			force: props.location.state.force,
-			name: props.location.state.name,
+			force:
+				props.location !== undefined
+					? props.location.state.force
+					: props.location,
+			name:
+				props.location !== undefined
+					? props.location.state.name
+					: props.location,
 			fetching: false,
 		};
-		this.characteres = props.location.state.characteres;
+		this.characteres =
+			props.location !== undefined
+				? props.location.state.characteres
+				: props.location;
 		this.getForce = this.getForce.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 	}
@@ -29,17 +38,16 @@ export default class Character extends React.Component {
 	}
 
 	handleClick() {
+		const names = Object.keys(this.characteres);
 		this.setState({ fetching: true }, () => {
-			Promise.all([this.getForce("luke"), this.getForce("darth")]).then(
-				(data) => {
-					const result = data[0].time < data[1].time ? data[0] : data[1];
-					this.setState({
-						force: result.force,
-						name: result.name,
-						fetching: false,
-					});
-				}
-			);
+			Promise.all(names.map((name) => this.getForce(name))).then((data) => {
+				const result = data[0].time < data[1].time ? data[0] : data[1];
+				this.setState({
+					force: result.force,
+					name: result.name,
+					fetching: false,
+				});
+			});
 		});
 	}
 
@@ -52,7 +60,11 @@ export default class Character extends React.Component {
 						to="/"
 						className={`character_navigation_arrow character_navigation_arrow--${force}`}
 					/>
-					<span className={`character_navigation_text--${force}`}>back</span>
+					<span
+						className={`character_navigation_text character_navigation_text--${force}`}
+					>
+						back
+					</span>
 				</div>
 				<div className={`character_content character_content--${force}`}>
 					<button

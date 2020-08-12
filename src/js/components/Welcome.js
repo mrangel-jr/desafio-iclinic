@@ -32,16 +32,15 @@ export default class Welcome extends React.Component {
 	}
 
 	handleClick() {
-		Promise.all([this.getForce("luke"), this.getForce("darth")]).then(
-			(data) => {
-				const result = data[0].time < data[1].time ? data[0] : data[1];
-				this.props.history.push("/character", {
-					force: result.force,
-					name: result.name,
-					characteres: this.characteres,
-				});
-			}
-		);
+		const names = Object.keys(this.characteres);
+		Promise.all(names.map((name) => this.getForce(name))).then((data) => {
+			const result = data[0].time < data[1].time ? data[0] : data[1];
+			this.props.history.push("/character", {
+				force: result.force,
+				name: result.name,
+				characteres: this.characteres,
+			});
+		});
 	}
 
 	render() {

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Welcome snapshot renders 1`] = `
+<div
+  className="welcome"
+>
+  <div
+    className="welcome_iclinic--title"
+  >
+    Welcome to 
+    <b>
+      iClinic
+    </b>
+  </div>
+  <p
+    className="welcome_iclinic--subtitle"
+  >
+    FRONTEND CHALLENGE
+  </p>
+  <button
+    className="welcome_iclinic--start"
+    onClick={[Function]}
+  >
+    START
+  </button>
+</div>
+`;
