@@ -1,0 +1,31 @@
+/*
+    Colors of Application
+*/
+
+$main-color: #2C97D1;
+$black-color: #000;
+$white-color:#FFF;
+$background-light: #FBFE63;
+$text-main-light: #2A2A2A;
+$button-text-light:#FBFE63;
+$button-background-light:#2A2A2A;
+$background-dark: #2B2B2B;
+$text-main-dark: #FFF;
+$button-text-dark:#2A2A2A;
+$button-background-dark:#FFF;
+
+
+// Media Queries
+$desktop-width: 800px;
+
+@mixin mobile {
+    @media (max-width: #{$desktop-width}) {
+      @content;
+    }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}

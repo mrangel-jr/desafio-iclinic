@@ -1,0 +1,63 @@
+.welcome {
+	display: flex;
+	display: -webkit-flex;
+	flex-direction: column;
+	color: $main-color;
+	font-family: $font;
+	font-style: normal;
+	font-weight: normal;
+	align-items: center;
+
+	&_iclinic {
+		&--title {
+			font-size: 72px;
+			line-height: 88px;
+			position: absolute;
+			top: 210px;
+			@include mobile {
+				font-size: 54px;
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				top: 150px;
+			}
+		}
+
+		&--subtitle {
+			position: absolute;
+			top: 305px;
+			font-size: 14px;
+			line-height: 17px;
+			letter-spacing: 0.35em;
+			@include mobile {
+				font-size: 10px;
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				top: 155px;
+			}
+		}
+
+		&--start {
+			color: $white-color;
+			position: absolute;
+			width: 189px;
+			height: 56px;
+			top: 484px;
+			font-weight: bold;
+			font-size: 18px;
+			line-height: 22px;
+			position: absolute;
+			background: #2c97d1;
+			border-radius: 10px;
+			border: 0px;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+}

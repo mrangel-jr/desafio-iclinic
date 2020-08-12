@@ -1,0 +1,163 @@
+.character {
+	height: 100%;
+	&--light {
+		background: $background-light;
+	}
+	&--dark {
+		background: $background-dark;
+	}
+	&_navigation {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		align-items: center;
+		height: 13%;
+		position: relative;
+		font-family: $font;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		line-height: 22px;
+		left: 5%;
+		width: 95%;
+		&_arrow {
+			background: url("../images/arrow.png");
+			background-repeat: no-repeat;
+			height: 25px;
+			width: 50px;
+			&--light {
+				filter: invert(100%);
+			}
+			&--dark {
+				filter: invert(0%);
+			}
+		}
+
+		&_text {
+			position: absolute;
+			width: 109px;
+			height: 47px;
+			left: 68px;
+			top: 35px;
+
+			&--light {
+				color: $text-main-light;
+			}
+			&--dark {
+				color: $text-main-dark;
+			}
+		}
+	}
+	&_content {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		height: 87%;
+		&--light {
+			background: $background-light;
+		}
+		&--dark {
+			background: $background-dark;
+		}
+		&_button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: $font;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 16px;
+			line-height: 20px;
+			width: 347px;
+			height: 56px;
+			top: 175px;
+			border-radius: 10px;
+			border: 0px;
+			order: 1;
+			opacity: 1;
+			@include mobile {
+				order: 3;
+				position: absolute;
+				top: 600px;
+			}
+
+			&:disabled {
+				opacity: 0.5;
+			}
+
+			&:hover {
+				cursor: pointer;
+			}
+
+			&--light {
+				color: $button-text-light;
+				background: $button-background-light;
+			}
+			&--dark {
+				color: $button-text-dark;
+				background: $button-background-dark;
+			}
+		}
+		&_avatar {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			height: 417px;
+			width: 625px;
+			order: 2;
+			@include mobile {
+				height: 350px;
+				order: 1;
+			}
+
+			&--light {
+				height: 300px;
+				width: 300px;
+				border-radius: 50%;
+				background: url("../images/luke-skywalker.png");
+				background-repeat: no-repeat;
+				background-size: 300px 300px;
+				background-position: center;
+			}
+			&--dark {
+				height: 300px;
+				width: 300px;
+				border-radius: 50%;
+				background: url("../images/darth-vader.png");
+				background-repeat: no-repeat;
+				background-size: 300px 300px;
+				background-position: center;
+			}
+		}
+
+		&_message {
+			font-family: $font;
+			font-weight: normal;
+			font-size: 36px;
+			line-height: 44px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: row;
+			order: 3;
+			@include mobile {
+				flex-direction: column;
+				order: 2;
+			}
+
+			&_main {
+				padding-right: 12px;
+			}
+
+			&--light {
+				color: $text-main-light;
+			}
+
+			&--dark {
+				color: $text-main-dark;
+			}
+		}
+	}
+}
