@@ -3,7 +3,7 @@ const axios = require("axios").default;
 export default () => {
 	const instance = axios.create({
 		headers: {
-			"Content-type": "application/json",
+			"Content-type": "application/json"
 		},
 	});
 	instance.interceptors.request.use((x) => {

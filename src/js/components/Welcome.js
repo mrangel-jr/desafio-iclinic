@@ -8,11 +8,11 @@ export default class Welcome extends React.Component {
 		this.characteres = {
 			luke: {
 				force: "light",
-				url: "https://swapi.dev/api/people/1",
+				url: "http://localhost:8081/luke",
 			},
 			darth: {
 				force: "dark",
-				url: "https://swapi.dev/api/people/4",
+				url: "http://localhost:8081/darth",
 			},
 		};
 		this.getForce = this.getForce.bind(this);
