@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "../utils/axios";
+import Spinner from "./Spinner";
 
 export default class Character extends React.Component {
 	constructor(props) {
@@ -77,6 +78,7 @@ export default class Character extends React.Component {
 					<div className="character_content_avatar">
 						<div className={`character_content_avatar--${force}`}></div>
 					</div>
+					{fetching && <Spinner fetching={fetching}/>}
 					<div
 						className={`character_content_message character_content_message--${force}`}
 					>
