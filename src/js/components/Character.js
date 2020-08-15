@@ -1,43 +1,23 @@
 /* eslint-disable react/prop-types */
-import React, {  useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import axios from "../utils/axios";
+import React, { useEffect, useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { MainContext } from "./MainContext";
 import Spinner from "./Spinner";
 
 export default function Character() {
-	const { location } = useHistory();
-	const [{ force, name }, setData] = useState({
-		force: location.state.force,
-		name: location.state.name,
-	});
+	const { force, name, fetchData } = useContext(MainContext);
+
 	const [fetching, setFetch] = useState(false);
-	const { characteres } = location.state;
 
 	useEffect(() => {
-		const fetchData = async () => {
-			const names = Object.keys(characteres);
-			Promise.all(names.map((name) => getForce(name))).then((data) => {
-				const { force, name } = data[0].time < data[1].time ? data[0] : data[1];
-				setData({ force, name });
-				setFetch(false);
-			});
-		};
+		async function consumeData() {
+			await fetchData()
+				.then(() => setFetch(false));
+		}
 		if (fetching) {
-			fetchData();
+			consumeData();
 		}
 	}, [fetching]);
-
-	async function getForce(character) {
-		const char = characteres[character];
-		let result = await axios()
-			.get(char.url)
-			.then((res) => ({
-				force: char.force,
-				name: res.data.name,
-				time: res.responseTimer,
-			}));
-		return result;
-	}
 
 	return (
 		<div className={`character character--${force}`}>
