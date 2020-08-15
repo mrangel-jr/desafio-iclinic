@@ -11,8 +11,7 @@ export default function Character() {
 
 	useEffect(() => {
 		async function consumeData() {
-			await fetchData()
-				.then(() => setFetch(false));
+			await fetchData().then(() => setFetch(false));
 		}
 		if (fetching) {
 			consumeData();
@@ -43,7 +42,7 @@ export default function Character() {
 				<div className="character_content_avatar">
 					<div className={`character_content_avatar--${force}`}></div>
 				</div>
-				{fetching && <Spinner fetching />}
+				{fetching && <Spinner />}
 				<div
 					className={`character_content_message character_content_message--${force}`}
 				>
